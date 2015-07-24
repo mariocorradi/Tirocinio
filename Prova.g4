@@ -3,7 +3,7 @@ grammar Tirocinio;
 //Come è formata una sezione viene tralasciata perchè varia da lingua a lingua
 
 //Gestione delle info, ciò che c'è tra quattro parantesi graffe {{ ... }}
-EnterInfo	:	GRAFFAAP GRAFFAAP ;
+Enter	:	GRAFFAAP  ;
 TestoInfo	:	~[BARRAVERTICALE GRAFFACHI]+ ;  
 SaltaInfo	:	BARRAVERTICALE -> channel(HIDDEN) ;
 ExitInfo	:	GRAFFACHI GRAFFACHI ; // qui bisogna stare attenti perchè testoinfo potrebbe consumare la prima graffachi
@@ -50,5 +50,6 @@ fragment PUNTOVIRGOLA	:	';' ;
 fragment TRATTINO	:	'-' ;
 fragment BARRAVERTICALE	:	'|' ;
 
-informazione	:	EnterInfo  ;
+informazione	:	Enter  ;
+  
 
