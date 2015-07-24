@@ -16,6 +16,7 @@ SaltaCollegamento	:	(BARRAVERTICALE | DUEPUNTI) -> channel(HIDDEN) ;
 ExitCollegamento	:	QUADRACHI QUADRACHI ;
 
 SEA_WS	:	[ \t]+ -> skip ;
+// in text potrebbe essere utile per file image [File : asdmakd.jpg|right|..] prendere fino a BARRAVERTICALE O CHIUSAQUADRA
 Text	:	~[UGUALE GRAFFAAP APOSTROFO QUADRAAP NEWLINE]+ 
 		|	APOSTROFO ~[APOSTROFO] Text 
 		|	QUADRAAP ~[QUADRAAP] Text
@@ -34,6 +35,9 @@ ElencoPulito	:	NEWLINE DUEPUNTI+  -> type(Elenco) ;
 //I simboli sono uguali in tutte le lingue, cambia come vengono utilizzati.
 
 NEWLINE	:	'\r'? '\n' ;
+
+fragment IMAGE	:	'File'|
+			'Image';
 fragment UGUALE	:	'=' ;
 fragment GRAFFAAP	:	'{' ;
 fragment GRAFFACHI	:	'}' ;
