@@ -26,7 +26,7 @@ Text	:	~[UGUALE GRAFFAAP APOSTROFO QUADRAAP NEWLINE]+
 ElencoPuntato	:	NEWLINE DUEPUNTI* ASTERISCO+ DUEPUNTI? -> type(Elenco) ;
 ElencoNumerico	:	NEWLINE DUEPUNTI* CANCELLETTO+ DUEPUNTI? -> type(Elenco) ;
 ElencoPersonale	:	NEWLINE DUEPUNTI* PUNTOVIRGOLA TestoElencoPersonale DUEPUNTI -> type(Elenco) ;
-fragment TestoElencoPersonale	:	~[DUEPUNTI]+ ;
+fragment TestoElencoPersonale	:	~[DUEPUNTI]+ ;  // se nel testo ci fosse un due punti ? 
 ElencoPulito	:	NEWLINE DUEPUNTI+  -> type(Elenco) ;
 
 
