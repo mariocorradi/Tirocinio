@@ -3,10 +3,10 @@ grammar Tirocinio;
 //Come è formata una sezione viene tralasciata perchè varia da lingua a lingua
 
 //Gestione delle info, ciò che c'è tra quattro parantesi graffe {{ ... }}
-Enter	:	GRAFFAAP  ;
+Enter	:	GRAFFA GRAFFA  ;
+Exit	:	GRAFFACHI GRAFFACHI NEWLINE; 
 TestoInfo	:	~[BARRAVERTICALE GRAFFACHI]+ ;  
 SaltaInfo	:	BARRAVERTICALE -> channel(HIDDEN) ;
-ExitInfo	:	GRAFFACHI GRAFFACHI ; // qui bisogna stare attenti perchè testoinfo potrebbe consumare la prima graffachi
 
 //Gestione dei collegamento, ciò che c'è tr quattro parantesi quadre [[ ... ]]
 EnterCollegamento	:	QUADRAAP QUADRAAP; 
@@ -39,7 +39,8 @@ fragment IMAGE	:	'File'|
 			'Image';
 fragment UGUALE	:	'=' ;
 GRAFFAAP	:	'{{' ;
-fragment GRAFFACHI	:	'}' ;
+GRAFFA : '{' ;
+GRAFFACHI	: '}' ;
 fragment QUADRAAP	:	'[' ;
 fragment QUADRACHI	:	']' ;
 fragment APOSTROFO	:	'\'' ;
@@ -50,6 +51,5 @@ fragment PUNTOVIRGOLA	:	';' ;
 fragment TRATTINO	:	'-' ;
 fragment BARRAVERTICALE	:	'|' ;
 
-informazione	:	Enter  ;
-  
-
+informazione	:	Enter exit;
+exit : Exit;
