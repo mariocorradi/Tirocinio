@@ -7,7 +7,7 @@ tokens {TestoNomeSezione, EnterSezione, ExitSezione, Elenco, EnterInfo}
 EnterInfo	:	GRAFFAAP GRAFFAAP -> type(EnterInfo);
 TestoInfo	:	~[BARRAVERTICALE GRAFFACHI]+ ; // non mi è tanto chiaro questo 
 SaltaInfo	:	BARRAVERTICALE -> channel(HIDDEN) ;
-ExitInfo	:	GRAFFACHI GRAFFACHI ;
+ExitInfo	:	GRAFFACHI GRAFFACHI ; // qui bisogna stare attenti perchè testoinfo potrebbe consumare la prima graffachi
 
 //Gestione dei collegamento, ciò che c'è tr quattro parantesi quadre [[ ... ]]
 EnterCollegamento	:	QUADRAAP QUADRAAP; 
