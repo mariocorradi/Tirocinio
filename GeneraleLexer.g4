@@ -10,8 +10,8 @@ SaltaInfo	:	BARRAVERTICALE -> channel(HIDDEN) ;
 ExitInfo	:	GRAFFACHI GRAFFACHI ;
 
 //Gestione dei collegamento, ciò che c'è tr quattro parantesi quadre [[ ... ]]
-EnterCollegamento	:	QUADRAAP QUADRAAP; // non è male come idea io però la farei più sul parser del tipo [[ testo ]]
-TestoCollegamento	:	~[BARRAVERTICALE DUEPUNTI QUADRACHI]+ ;
+EnterCollegamento	:	QUADRAAP QUADRAAP; 
+TestoCollegamento	:	~[BARRAVERTICALE DUEPUNTI QUADRACHI]+ ; // qui starei attendo perchè si può confodere con File: 
 SaltaCollegamento	:	(BARRAVERTICALE | DUEPUNTI) -> channel(HIDDEN) ;
 ExitCollegamento	:	QUADRACHI QUADRACHI ;
 
