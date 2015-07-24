@@ -51,5 +51,6 @@ fragment PUNTOVIRGOLA	:	';' ;
 fragment TRATTINO	:	'-' ;
 fragment BARRAVERTICALE	:	'|' ;
 
-informazione	:	Enter exit;
+informazione	:	Enter testo exit;
+testo: TestoInfo;
 exit : Exit;
