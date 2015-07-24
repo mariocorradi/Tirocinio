@@ -5,12 +5,12 @@ tokens {TestoNomeSezione, EnterSezione, ExitSezione, Elenco, EnterInfo}
 
 //Gestione delle info, ciò che c'è tra quattro parantesi graffe {{ ... }}
 EnterInfo	:	GRAFFAAP GRAFFAAP -> type(EnterInfo);
-TestoInfo	:	~[BARRAVERTICALE GRAFFACHI]+ ;
+TestoInfo	:	~[BARRAVERTICALE GRAFFACHI]+ ; // non mi è tanto chiaro questo 
 SaltaInfo	:	BARRAVERTICALE -> channel(HIDDEN) ;
 ExitInfo	:	GRAFFACHI GRAFFACHI ;
 
 //Gestione dei collegamento, ciò che c'è tr quattro parantesi quadre [[ ... ]]
-EnterCollegamento	:	QUADRAAP QUADRAAP;
+EnterCollegamento	:	QUADRAAP QUADRAAP; // non è male come idea io però la farei più sul parser del tipo [[ testo ]]
 TestoCollegamento	:	~[BARRAVERTICALE DUEPUNTI QUADRACHI]+ ;
 SaltaCollegamento	:	(BARRAVERTICALE | DUEPUNTI) -> channel(HIDDEN) ;
 ExitCollegamento	:	QUADRACHI QUADRACHI ;
