@@ -1,0 +1,16 @@
+{{-sost-|it}}
+{{Pn|w}} ''f inv''
+[[File:Shimp_pasta.jpg|thumb|300px|right|un [[piatto]] di '''pasta''']]
+#{{term|chimica|it}} [[amalgama]] o [[impasto]] di sostanze diverse
+#*''La '''pasta''' dentifricia era di colore verde''
+# {{Term|gastronomia|it}} impasto di farina e acqua talvolta [[arricchito]] con altri ingredienti consumato asciutto o in [[brodo]] 
+#*''La '''pasta''' per le tagliatelle è fatta con le uova''
+# {{Term|gastronomia|it}} impasto per [[dolci]] o [[torte]]
+# {{Term|gastronomia|it}} [[pastasciutta]]
+# {{Term|gastronomia|it}} piccolo dolce di [[pasticceria]] {{Linkp|paste}}
+
+{{-sill-}}
+
+
+{{-pron-}}
+{{IPA|/'pa sta/}}
