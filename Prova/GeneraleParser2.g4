@@ -1,8 +1,9 @@
-parser grammar GeneraleParser2;
+parser grammar GeneraleParser;
 options { tokenVocab=GeneraleLexer; }
 
-page	:	sezione+;
-sezione	:	EnterSezione TestoNomeSezione ExitSezione contenuto;
-contenuto	:	(Text | informazione)+ ;
+contenuto	:	(testo | informazione | collegamento | elenco)+ ;
 informazione	:	EnterInfo TestoInformazione ExitInfo ;
-
+collegamento	:	EnterCollegamento image? CollegamentoTestoGenerico+ ExitCollegamento ;
+image	:	CollegamentoImage ;
+testo	:	(Text | NEWLINE) ;
+elenco	:	Elenco ( informazione | Text | collegamento)*;
