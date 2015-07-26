@@ -13,7 +13,7 @@ tokens {TestoNomeSezione, EnterSezione, ExitSezione, Elenco, EnterInfo}
 //Come è formata l'informazione
 EnterInformazione	:	GRAFFAAPERTA GRAFFAAPERTA {enterInfo = true; testo = false;} -> type( EnterInfo ) ;
 ExitInfo	:	{enterInfo}? GRAFFACHIUSA GRAFFACHIUSA {enterInfo = false; testo = true; } ;
-TestoInformazione	:	{enterInfo}?  ~[}]+ ;
+TestoInformazione	:	{enterInfo}?  ~[}|]+ ;
 SkipInformazione	:	{enterInfo}? '|' -> skip ;
 
 //Come è formato il collegamento
