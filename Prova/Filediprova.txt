@@ -1,0 +1,21 @@
+<page>
+    <title>pasta</title>
+    <ns>0</ns>
+    <id>62861</id>
+    <revision>
+      <id>2226302</id>
+      <parentid>2219016</parentid>
+      <timestamp>2015-02-06T23:19:22Z</timestamp>
+      <contributor>
+        <username>Ulisse</username>
+        <id>18921</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">
+{{-sost-|it}}
+{{Pn|w}} ''f inv''
+]</text>
+      <sha1>kwnxtapxjnoelf3368awyhi84mmzsor</sha1>
+    </revision>
+  </page>
