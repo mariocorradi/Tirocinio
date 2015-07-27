@@ -1,7 +1,9 @@
 parser grammar GeneraleParser;
 options { tokenVocab=GeneraleLexer; }
 
-contenuto	:	(testo | informazione | collegamento | elenco)+ ;
+elemento : contenuto+;
+contenuto	:	(tag |testo | informazione | collegamento | elenco)+ ;
+tag : ApertoTag NEWLINE? (contenuto)* ChiusoTag NEWLINE?;
 informazione	:	EnterInfo TestoInformazione+ ExitInfo ;
 collegamento	:	EnterCollegamento image? CollegamentoTestoGenerico+ ExitCollegamento ;
 image	:	CollegamentoImage ;
