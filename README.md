@@ -12,3 +12,11 @@ Link output professore: https://mega.co.nz/#!jhZVAA5I!hfDmRHMQZ2rKxEDi27dH9crvzn
 Link utile Parser:https://theantlrguy.atlassian.net/wiki/display/ANTLR4/Parser+and+lexer+interpreters
 
 Comunque potremmo anche fare un topic su github vediamo se qualcun'altro ha il nostro problema :)
+
+
+se devo estendere una regola esempio file principale ho 
+
+domanda : frase punto interrogativo
+
+e in quello esteso a domanda vorrei aggiungere anche l'esclamativo non posso fare domanda : esclamativo non so se mi sono spiegato fammi sapere.
+
