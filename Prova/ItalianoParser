@@ -1,0 +1,11 @@
+parser grammar ItalianoParser;
+options { tokenVocab=ItalianoLexer; }
+import GeneraleParser;
+
+page :	(contenuto)+;
+
+contenuto	:	(tag| lingua | testo | informazione | collegamento | elenco )+ ;
+
+lingua : Enteruguale Lingua+ Chiusurauguale;
+//lingua : '==' SPAZIO? LINGUA SPAZIO? '==' NEWLINE?;
+		
