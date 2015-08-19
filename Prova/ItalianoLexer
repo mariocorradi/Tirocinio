@@ -1,0 +1,10 @@
+lexer grammar ItalianoLexer;
+import GeneraleLexer;
+@lexer::members{
+	private boolean lingua = false;
+}
+
+Enteruguale : UGUALE UGUALE {lingua = true;testo=false;};
+Lingua	:	{lingua}?  ~[=]+ ;
+Chiusurauguale: {lingua}? UGUALE UGUALE {lingua = false;testo=true;};
+
