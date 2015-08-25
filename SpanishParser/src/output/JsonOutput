@@ -1,0 +1,136 @@
+package objects.output;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import eccezione.OutputChiaveNonValida;
+import eccezione.OutputKeyAlreadyExist;
+import eccezione.OutputValueIsNull;
+import enums.OutputVariableNames;
+
+
+/**
+ * Tramite questa classe � possibile costruire l'output in json dei dizionari.
+ *
+ */
+public class JsonOutput implements Output{
+
+	private JSONObject pagine;
+	private HashMap<String, Object> lastPagina;
+	private String lastKey;
+	
+	public JsonOutput() {
+		pagine = new JSONObject();
+	}
+	
+	@Override
+	public void newPage(String key) {
+		try {
+			if(lastPagina != null) pagine.put(lastKey, lastPagina);
+			lastKey = key;
+			lastPagina = new HashMap<String, Object>();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@Override
+	public void concanateArray(Object value, String...keys) {
+		HashMap<String, Object> map = lastPagina;
+		for(int i = 0; i < (keys.length-1) ; i++){
+			map = (HashMap<String, Object>) lastPagina.get(keys[i]);
+		}
+		String key = keys[keys.length-1];
+		if(map.containsKey(key)){
+			((ArrayList<Object>)map.get(key)).add(value);
+		} else {
+			ArrayList<Object> lista = new ArrayList<Object>();
+			lista.add(value);
+			map.put(key, lista);
+		}
+	}
+	
+	@Override
+	public String toString() {
+		try {
+			pagine.put(lastKey, lastPagina);
+			return pagine.toString(3);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+	@Override
+	public void addValue(boolean concatena, String separatore, Object value,
+			OutputVariableNames key) throws OutputChiaveNonValida,
+			OutputValueIsNull, OutputKeyAlreadyExist {
+		
+		if(value == null)
+			throw new OutputValueIsNull();
+		
+		addValuePrivate(concatena, separatore != null ? separatore : "", value, key, null);
+	}
+
+	@Override
+	public void addValue(boolean concatena, String separatore, Object value,
+			OutputVariableNames key, String lastOptionalKey)
+			throws OutputChiaveNonValida, OutputValueIsNull,
+			OutputKeyAlreadyExist {
+		
+		if(lastOptionalKey == null)
+			throw new OutputChiaveNonValida("Optional key is null");
+		if(value == null)
+			throw new OutputValueIsNull();
+		
+		addValuePrivate(concatena, separatore != null ? separatore : "", value, key, lastOptionalKey);
+	}
+	
+	
+	private void addValuePrivate(boolean concatena, String separatore, Object value,
+			OutputVariableNames key, String lastOptionalKey) throws OutputChiaveNonValida, OutputKeyAlreadyExist{
+		HashMap<String, Object> mappa = lastPagina;
+		if(lastOptionalKey != null){
+			Object rt = mappa.get(key.toString());
+			if(rt == null){
+				rt = new HashMap<String, Object>();
+				mappa.put(key.toString(), rt);
+			}
+			mappa = (HashMap<String, Object>) rt;
+		}
+		Object v;
+		String k = lastOptionalKey != null ? lastOptionalKey : key.toString();
+		if(lastOptionalKey == null && key.hasBold()){
+			Object rt = mappa.get(k);
+			if(rt == null){
+				rt = new HashMap<String, Object>();
+				mappa.put(k, rt);
+			}
+			mappa = (HashMap<String, Object>) rt;
+			k = OutputVariableNames.Content.toString();
+		}
+		if(!concatena){ //Se non lo devo concatenare, la chiave non deve esistere
+			if(mappa.containsKey(k))
+				throw new OutputKeyAlreadyExist(k);
+			v = value;
+		} else {
+			String oldValue = (String) mappa.get(k);
+			if(oldValue != null){
+				if(oldValue.endsWith("\n") && ((String)value).matches("\r?\n")){
+					oldValue = oldValue.trim();
+					v = oldValue;
+				} else
+					v = oldValue + separatore + value;
+			}else
+				v = value;
+		}
+		mappa.put(k, v);
+	}
+	
+}
